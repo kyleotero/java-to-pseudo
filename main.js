@@ -6,6 +6,7 @@ function convert() {
   var not = ["public", "private", "static", "void", "int", "string", "boolean"];
   var types = ["void", "int", "string", "Boolean"];
   var brackets = ["{", "}"];
+  var ops = ["-", "+", "*", "/"];
   for (var i = 0; i < lines.length; i++) {
     var chars = lines[i].split("");
     var words = lines[i].split(" ");
@@ -48,10 +49,18 @@ function convert() {
       i -= 1;
     } else {
       for (var j = 0; j < brackets.length; j++) {
-        if (lines[i].indexOf(brackets[j] !== -1)) {
+        if (lines[i].indexOf(brackets[j] !== -1) || lines[i].includes("=")) {
           for (var k = 0; k < chars.length; k++) {
             if (chars[k] == brackets[j]) {
               chars.splice(k, 1);
+            } else if (chars[k] == "=" && chars[k + 1] == "=") {
+              chars[k + 1] = "";
+            } else if (
+              chars[k] == "=" &&
+              chars[k + 1] != "=" &&
+              !ops.includes(chars[k - 1])
+            ) {
+              chars[k] = "<-";
             }
           }
           lines[i] = "";
