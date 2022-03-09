@@ -1,7 +1,13 @@
+input = document.getElementById("input");
+
+input.addEventListener("input", convert);
+
 function convert() {
   var code = document.getElementById("input").value;
+  var output = document.getElementById("output");
   var lines = code.split(/\r?\n/);
   var pseudo = "";
+  var init = 0;
   var pseudoarr = [];
   var not = ["public", "private", "static", "void", "int", "string", "boolean"];
   var types = ["void", "int", "string", "Boolean"];
@@ -20,9 +26,10 @@ function convert() {
       for (var j = 0; j < words.length; j++) {
         lines[i] += words[j] + " ";
       }
-      pseudoarr.unshift(lines[i]);
+      pseudoarr.splice(init, 1, lines[i]);
       lines.splice(i, 1);
-      i -= 1;
+      i--;
+      init++;
     } else if (
       (lines[i].includes("public") || lines[i].includes("private")) &&
       lines[i].includes("(")
@@ -77,5 +84,7 @@ function convert() {
     pseudo += pseudoarr[i] + "\n";
   }
 
-  document.getElementById("input").value = pseudo;
+  output.value = pseudo;
+
+  if (code == "") output.value = "";
 }

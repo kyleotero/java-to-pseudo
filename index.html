@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>java to pseudo</title>
-    <link rel="shortcut icon" type="image/jpg" href="./images/favicon.ico" />
+    <link rel="shortcut icon" type="image/jpg" href="./images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="./styles.css" title="styles" />
     <script src="main.js" defer></script>
   </head>
   <body class="bg-dark">
-    <div class="flex h-5/6">
+    <div class="flex h-92%">
       <div
         id="first"
-        class="bg-main w-4/6 h-5/6 rounded-lg shadow-bot m-auto flex"
+        class="bg-main w-5/12 h-5/6 rounded-lg shadow-bot m-auto flex"
       >
         <textarea
           id="input"
@@ -19,15 +19,16 @@
           class="bg-main text-white font-jetBrains text-standard h-92% w-95% outline-none resize-none m-auto placeholder:text-[#89c8e2]"
         ></textarea>
       </div>
-    </div>
-    <div class="flex h-diff">
-      <a
-        id="convert"
-        class="m-auto border-3 border-main rounded text-main text-center px-10 py-5 hover:bg-main hover:text-white shadow-button hover:cursor-pointer"
-        onclick="convert()"
+      <div
+        id="second"
+        class="bg-main w-5/12 h-5/6 rounded-lg shadow-bot m-auto flex"
       >
-        Convert
-      </a>
+        <textarea
+          id="output"
+          placeholder="Your pseudocode will appear here."
+          class="bg-main text-white font-jetBrains text-standard h-92% w-95% outline-none resize-none m-auto placeholder:text-[#89c8e2]"
+        ></textarea>
+      </div>
     </div>
   </body>
 </html>

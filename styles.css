@@ -492,12 +492,32 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: screen - 83%;
 }
 
-.w-4\/6 {
-  width: 66.666667%;
+.h-screen {
+  height: 100vh;
+}
+
+.w-auto {
+  width: auto;
 }
 
 .w-95\% {
   width: 95%;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-2\/6 {
+  width: 33.333333%;
+}
+
+.w-2\/5 {
+  width: 40%;
+}
+
+.w-5\/12 {
+  width: 41.666667%;
 }
 
 .resize-none {
@@ -599,17 +619,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .placeholder\:text-\[\#89c8e2\]::placeholder {
   --tw-text-opacity: 1;
   color: rgb(137 200 226 / var(--tw-text-opacity));
-}
-
-.empty\:before\:text-\[\#89c8e2\]:empty::before {
-  content: var(--tw-content);
-  --tw-text-opacity: 1;
-  color: rgb(137 200 226 / var(--tw-text-opacity));
-}
-
-.empty\:before\:content-pre:empty::before {
-  --tw-content: attr(pref);
-  content: var(--tw-content);
 }
 
 .hover\:cursor-pointer:hover {

@@ -27,6 +27,9 @@ module.exports = {
       borderWidth: {
         3: "3px",
       },
+      flex: {
+        midflex: "0 0 50%",
+      },
     },
   },
   plugins: [],
