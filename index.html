@@ -3,12 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <title>kyle does stuff</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" title="style" />
+    <link rel="stylesheet" type="text/css" href="./styles.css" title="styles" />
     <script src="main.js" defer></script>
   </head>
-  <body>
-    <div id="first">
-      <textarea id="input" placeholder="Enter your code here."></textarea>
+  <body class="bg-dark">
+    <div class="flex h-5/6">
+      <div
+        id="first"
+        class="bg-main w-4/6 h-5/6 rounded-lg shadow-bot m-auto flex"
+      >
+        <textarea
+          id="input"
+          placeholder="Enter your code here."
+          class="bg-main text-white font-jetBrains text-standard h-92% w-95% outline-none resize-none m-auto placeholder:text-[#89c8e2]"
+        ></textarea>
+      </div>
+    </div>
+    <div class="flex h-diff">
+      <a
+        id="convert"
+        class="m-auto border-3 border-main rounded text-main text-center px-10 py-5 hover:bg-main hover:text-white shadow-button hover:cursor-pointer"
+        onclick="convert()"
+      >
+        Convert
+      </a>
     </div>
   </body>
 </html>
