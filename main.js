@@ -16,7 +16,19 @@ function convert() {
   for (var i = 0; i < lines.length; i++) {
     var chars = lines[i].split("");
     var words = lines[i].split(" ");
+    var trimmed = lines[i].trim();
     if (
+      trimmed.startsWith("/") ||
+      trimmed.startsWith("*") ||
+      lines[i] == "" ||
+      trimmed.includes("class") ||
+      trimmed.includes("package") ||
+      trimmed == "}" ||
+      trimmed == "{"
+    ) {
+      lines.splice(i, 1);
+      i--;
+    } else if (
       (lines[i].includes("public") || lines[i].includes("private")) &&
       !lines[i].trim().includes("(")
     ) {
@@ -49,9 +61,13 @@ function convert() {
           break;
         }
       }
-      pseudoarr.push(
-        "Method " + name + ":\n" + type + " " + name + "(" + input + ")"
-      );
+      if (type != "") {
+        pseudoarr.push(
+          "Method " + name + ":\n" + type + " " + name + "(" + input + ")"
+        );
+      } else {
+        pseudoarr.push("Method " + name + ":\n" + name + "(" + input + ")");
+      }
       lines.splice(i, 1);
       i -= 1;
     } else {
@@ -80,6 +96,7 @@ function convert() {
     }
   }
 
+  pseudoarr.splice(init, 0, "");
   for (var i = 0; i < pseudoarr.length; i++) {
     pseudo += pseudoarr[i] + "\n";
   }
