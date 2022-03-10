@@ -110,11 +110,11 @@ function convert() {
 document.getElementById("input").addEventListener("keydown", function (e) {
   if (e.key == "Tab") {
     e.preventDefault();
-    var beginning = input.selectionStart;
-    var end = input.selectionEnd;
-    input.value =
-      input.value.substring(0, beginning) + "\t" + input.value.substring(end);
+    var beginning = this.selectionStart;
+    var end = this.selectionEnd;
+    this.value =
+      this.value.substring(0, beginning) + "\t" + this.value.substring(end);
 
-    input.selectionStart = input.selectionEnd = beginning + 1;
+    this.selectionStart = this.selectionEnd = beginning + 1;
   }
 });
