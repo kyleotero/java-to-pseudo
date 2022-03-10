@@ -20,7 +20,6 @@ function convert() {
     if (
       trimmed.startsWith("/") ||
       trimmed.startsWith("*") ||
-      lines[i] == "" ||
       trimmed.includes("class") ||
       trimmed.includes("package") ||
       trimmed == "}" ||
@@ -75,15 +74,18 @@ function convert() {
         if (lines[i].indexOf(brackets[j] !== -1) || lines[i].includes("=")) {
           for (var k = 0; k < chars.length; k++) {
             if (chars[k] == brackets[j]) {
-              chars.splice(k, 1);
-            } else if (chars[k] == "=" && chars[k + 1] == "=") {
-              chars[k + 1] = "";
+              if (lines[i].includes("if")) {
+                chars.splice(k, 1, "then");
+              } else chars.splice(k, 1);
             } else if (
               chars[k] == "=" &&
               chars[k + 1] != "=" &&
               !ops.includes(chars[k - 1])
             ) {
+              console.log("balls");
               chars[k] = "<-";
+            } else if (chars[k] == "=" && chars[k + 1] == "=") {
+              chars.splice(k + 1, 1);
             }
           }
           lines[i] = "";
@@ -96,7 +98,6 @@ function convert() {
     }
   }
 
-  pseudoarr.splice(init, 0, "");
   for (var i = 0; i < pseudoarr.length; i++) {
     pseudo += pseudoarr[i] + "\n";
   }
@@ -105,3 +106,15 @@ function convert() {
 
   if (code == "") output.value = "";
 }
+
+document.getElementById("input").addEventListener("keydown", function (e) {
+  if (e.key == "Tab") {
+    e.preventDefault();
+    var beginning = input.selectionStart;
+    var end = input.selectionEnd;
+    input.value =
+      input.value.substring(0, beginning) + "\t" + input.value.substring(end);
+
+    input.selectionStart = input.selectionEnd = beginning + 1;
+  }
+});
