@@ -77,17 +77,16 @@ function convert() {
               if (lines[i].includes("if")) {
                 chars.splice(k, 1, "then");
               } else chars.splice(k, 1);
-            } else if (
+            }
+            if (
               chars[k] == "=" &&
-              chars[k + 1] != "=" &&
+              chars[k - 1] != "=" &&
               !ops.includes(chars[k - 1])
             ) {
-              console.log("balls");
               chars[k] = "<-";
-            } else if (chars[k] == "=" && chars[k + 1] == "=") {
-              chars.splice(k + 1, 1);
             }
           }
+
           lines[i] = "";
           for (var k = 0; k < chars.length; k++) {
             lines[i] += chars[k];
@@ -98,6 +97,18 @@ function convert() {
     }
   }
 
+  for (var i = 0; i < pseudoarr.length; i++) {
+    var space = pseudoarr[i].split(" ");
+    if (pseudoarr[i].includes("<-<-")) {
+      pseudoarr[i] = "";
+      for (var j = 0; j < space.length; j++) {
+        if (space[j] == "<-<-") space[j] = "=";
+      }
+      for (var j = 0; j < space.length; j++) {
+        pseudoarr[i] += space[j] + " ";
+      }
+    }
+  }
   for (var i = 0; i < pseudoarr.length; i++) {
     pseudo += pseudoarr[i] + "\n";
   }
