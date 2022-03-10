@@ -17,6 +17,8 @@ module.exports = {
       },
       fontSize: {
         standard: "1vw",
+        mobile: "2vw",
+        med: "1.5vw",
       },
       content: {
         pre: "attr(pref)",

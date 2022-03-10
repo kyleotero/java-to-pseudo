@@ -472,10 +472,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: static;
 }
 
-.clear-both {
-  clear: both;
-}
-
 .m-auto {
   margin: auto;
 }
@@ -500,20 +496,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 83.333333%;
 }
 
-.w-5\/12 {
-  width: 41.666667%;
+.w-9\/12 {
+  width: 75%;
 }
 
 .w-95\% {
   width: 95%;
-}
-
-.w-8\/12 {
-  width: 66.666667%;
-}
-
-.w-9\/12 {
-  width: 75%;
 }
 
 .resize-none {
@@ -538,16 +526,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(25 27 29 / var(--tw-bg-opacity));
 }
 
-.pb-5 {
-  padding-bottom: 1.25rem;
-}
-
 .font-jetBrains {
   font-family: jetBrains;
 }
 
-.text-standard {
-  font-size: 1vw;
+.text-mobile {
+  font-size: 2vw;
 }
 
 .text-white {
@@ -587,23 +571,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(137 200 226 / var(--tw-text-opacity));
 }
 
+@media (min-width: 640px) {
+  .sm\:text-standard {
+    font-size: 1vw;
+  }
+
+  .sm\:text-med {
+    font-size: 1.5vw;
+  }
+}
+
 @media (min-width: 768px) {
-  .md\:m-auto {
-    margin: auto;
-  }
-
-  .md\:mb-0 {
-    margin-bottom: 0px;
-  }
-
-  .md\:mt-5 {
-    margin-top: 1.25rem;
-  }
-
-  .md\:mt-0 {
-    margin-top: 0px;
-  }
-
   .md\:mb-auto {
     margin-bottom: auto;
   }
@@ -618,5 +596,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:text-standard {
+    font-size: 1vw;
   }
 }
